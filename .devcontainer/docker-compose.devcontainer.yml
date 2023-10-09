@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  robot:
+    # build:
+    #     context: .
+    #     dockerfile: Dockerfile
+    image: rf-docker
+    container_name: rf-docker
+    shm_size: "256M"
+    stdin_open: True
+    tty: True
+    restart: "always"
+    volumes:
+      - $PWD/tests:/opt/robotframework/tests
+      - $PWD/reports:/opt/robotframework/reports
+      - $PWD/scripts:/opt/robotframework/scripts
+    command: "/bin/bash"
+    networks:
+      - robot-net
+
+networks:
+  robot-net:

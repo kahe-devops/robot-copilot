@@ -1,0 +1,15 @@
+{
+    "name": "Robot Framework Dev Container",
+    "dockerComposeFile": [
+		"docker-compose.devcontainer.yml"
+	],
+	"service": "robot",
+    "workspaceFolder": "/opt/codename/robot",
+    "extensions": [
+        "ms-python.python",
+        "ms-python.black-formatter",
+        "robocorp.robotframework-lsp"],
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    }
+}
