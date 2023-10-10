@@ -8,6 +8,11 @@ LABEL Robot in Docker
 ENV DEBIAN_FRONTEND=noninteractive
 ENV SHELL /bin/bash
 
+# Define the default user who'll run the tests
+ARG USERNAME=vscode
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
 # Setup the timezone to use, defaults to UTC
 ENV TZ=Europe/Helsinki
 
@@ -61,6 +66,7 @@ RUN pip3 install \
 
 # Install Browser library dependencies
 RUN python3 -m Browser.entry init
+RUN npx playwright install-deps
 
 # Create the default report and work folders with the default user to avoid runtime issues
 # These folders are writeable by anyone, to ensure the user can be changed on the command line.
