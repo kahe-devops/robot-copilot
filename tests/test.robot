@@ -1,18 +1,20 @@
 *** Settings ***
-Documentation     This is a test suite for testing login functionality
-Library           Browser
-Resource          ../resources/Chrome.resource
+Documentation       This is a test suite for testing Browser functionality
 
-Suite Setup       Setup Suite in Chrome    Chromium    ${HEADLESS}
-Suite Teardown    Teardown Suite
+Library             Browser
+Resource            ../resources/Chrome.resource
+
+Suite Setup         Setup Suite in Chrome    Chromium    ${HEADLESS}
+Suite Teardown      Teardown Suite
 
 
 *** Variables ***
-${HEADLESS}       True
+${HEADLESS}     True
+
 
 *** Test Cases ***
 Open Chrome with Browser
     [Documentation]    Open Chrome with Browser
-    [Tags]      smoke
+    [Tags]    smoke
     New Page    https://robotframework-browser.org/
     Get Text    title    ==    Browser Library

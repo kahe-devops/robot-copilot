@@ -12,9 +12,7 @@ services:
     tty: True
     restart: "always"
     volumes:
-      - $PWD/tests:/opt/robotframework/tests
-      - $PWD/reports:/opt/robotframework/reports
-      - $PWD/scripts:/opt/robotframework/scripts
+      - $PWD:/opt/robotframework
     command: "/bin/bash"
     networks:
       - robot-net

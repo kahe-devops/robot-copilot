@@ -1,0 +1,16 @@
+{
+    "editor.fontSize": 12,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": false,
+    "files.autoSave": "onFocusChange",
+    "python.defaultInterpreterPath": "/usr/local/bin/python",
+    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.iconTheme": "material-icon-theme",
+    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.cursorBlinking": true,
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "git.confirmSync": false
+}
