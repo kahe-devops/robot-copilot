@@ -17,7 +17,12 @@
 						"path": "/bin/bash"
 					}
 				},
-                "terminal.integrated.defaultProfile.linux": "bash"
+                "terminal.integrated.defaultProfile.linux": "bash",
+				"robot.pythonpath": [
+					"/opt/robotframework",
+					"/opt/robotframework/resources"
+				],
+				"robot.language-server.python": "/usr/local/bin/python"
             },
             "extensions": [
                 "ms-python.python",
