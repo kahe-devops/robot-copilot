@@ -1,10 +1,9 @@
 {
-    "editor.fontSize": 12,
-    "editor.tabSize": 2,
+    "editor.fontSize": 14,
+    "editor.tabSize": 4,
     "editor.wordWrap": "on",
     "editor.formatOnSave": false,
     "files.autoSave": "onFocusChange",
-    "python.defaultInterpreterPath": "/usr/local/bin/python",
     "workbench.colorTheme": "Default Dark Modern",
     "workbench.iconTheme": "material-icon-theme",
     "terminal.integrated.fontSize": 12,

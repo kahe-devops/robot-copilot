@@ -23,7 +23,7 @@ jobs:
 
       - name: Run tests
         run: |
-          robot -i "smoke" -e "not-*" --name "Smoke Tests" -L TRACE -d reports/ tests/
+          robot -i "set-smoke" -e "not-*" --name "Smoke Tests" -L TRACE -d reports/ tests/
 
       - name: Upload test results
         uses: actions/upload-artifact@v1
