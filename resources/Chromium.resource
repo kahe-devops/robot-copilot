@@ -11,12 +11,7 @@ ${HEADLESS}    True
 
 *** Keywords ***
 
-Setup Suite in Chrome
+Setup Suite in Chromium
     [Documentation]    Open Chromium browser
     [Arguments]        ${browser}    ${headless}
     New Browser        ${browser}    headless=${headless}
-
-Gherkin Open Chrome with Browser
-    Given I open the Chrome browser
-    When I navigate to "https://robotframework-browser.org/"
-    Then the page title should be "Browser Library"
