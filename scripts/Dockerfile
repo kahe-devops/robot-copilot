@@ -28,12 +28,6 @@ ENV ROBOT_WORK_DIR /opt/robotframework
 # Set number of threads for parallel execution
 # By default, no parallelisation
 ENV ROBOT_THREADS 1
-
-# Dependency versions
-ENV DATETIMETZ_VERSION 1.0.6
-ENV PABOT_VERSION 2.16.0
-ENV ROBOT_FRAMEWORK_VERSION 6.1.1
-ENV ROBOT_FRAMEWORK_BROWSER_VERSION 17.5.1
 ENV NODE_MAJOR 20
 
 # Install updates
@@ -59,10 +53,7 @@ RUN apt-get update \
 RUN pip3 install \
         --upgrade pip \
         --no-cache-dir \
-        robotframework==$ROBOT_FRAMEWORK_VERSION \
-        robotframework-browser==$ROBOT_FRAMEWORK_BROWSER_VERSION \
-        robotframework-datetime-tz==$DATETIMETZ_VERSION \
-        robotframework-pabot==$PABOT_VERSION
+        -r scripts/requirements.txt
 
 # Install Browser library dependencies
 RUN python3 -m Browser.entry init
