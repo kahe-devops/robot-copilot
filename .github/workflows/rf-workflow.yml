@@ -26,7 +26,7 @@ jobs:
           robot -i "set-smoke" -e "not-*" --name "Smoke Tests" -L TRACE -d reports/ tests/
 
       - name: Upload test results
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         if: always()
         with:
           name: reports
