@@ -31,11 +31,6 @@ jobs:
         with:
           name: reports
           path: reports
-      
-      - name: Debug reports folder
-        run: |
-          pwd
-          ls -la reports/
 
   generate_report:
     if: always()
