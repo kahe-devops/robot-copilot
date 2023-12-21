@@ -44,6 +44,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: reports
+          pattern: reports*
+          merge-multiple: true
       - run: ls -R reports
       - name: Send report to commit
         uses: joonvena/robotframework-reporter-action@v2.3
