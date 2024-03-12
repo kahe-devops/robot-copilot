@@ -31,6 +31,7 @@ jobs:
         with:
           name: reports
           path: reports
+      - run: ls -R reports
 
   generate_report:
     if: always()
@@ -43,6 +44,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: reports
+          pattern: reports*
+          merge-multiple: true
+      - run: ls -R reports
       - name: Send report to commit
         uses: joonvena/robotframework-reporter-action@v2.3
         with:
