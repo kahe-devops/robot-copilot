@@ -44,6 +44,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: reports
+          path: reports/
           pattern: reports*
           merge-multiple: true
       - run: ls -la
