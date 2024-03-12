@@ -46,7 +46,7 @@ jobs:
           name: reports
           pattern: reports*
           merge-multiple: true
-      - run: ls -R reports
+      - run: ls -la
       - name: Send report to commit
         uses: joonvena/robotframework-reporter-action@v2.4
         with:
