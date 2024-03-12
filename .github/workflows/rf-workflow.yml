@@ -48,6 +48,6 @@ jobs:
           merge-multiple: true
       - run: ls -R reports
       - name: Send report to commit
-        uses: joonvena/robotframework-reporter-action@v2.3
+        uses: joonvena/robotframework-reporter-action@v2.4
         with:
           gh_access_token: ${{ secrets.GITHUB_TOKEN }}
