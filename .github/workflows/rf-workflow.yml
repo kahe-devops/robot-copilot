@@ -30,7 +30,7 @@ jobs:
         if: always()
         with:
           name: reports
-          path: reports
+          path: reports/
       - run: ls -R reports
 
   generate_report:
@@ -51,3 +51,4 @@ jobs:
         uses: joonvena/robotframework-reporter-action@v2.4
         with:
           gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+          report_path: reports/
