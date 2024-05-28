@@ -3,6 +3,8 @@ Documentation       This is a test suite for testing Browser functionality
 ...                 Using https://marketsquare.github.io/robotframework-browser/Browser.html
 
 Library             Browser
+Library             OperatingSystem
+Library             String
 Resource            ../resources/Chromium.resource
 
 Suite Setup         Setup Suite in Chromium    Chromium    ${HEADLESS}
@@ -28,6 +30,14 @@ Gherkin Open Chromium with Browser and navigate to page and check title
     Then The Page Title Should be    Robot Framework User Guide
 
 
+ Go to Robotcode Extension Page and Read Latest Version
+    [Documentation]    Go to Robotcode Extension Page and Read Latest Version
+    [Tags]    set-smoke
+    Given User Opens the Chromium Browser
+    When User Navigates to    https://marketplace.visualstudio.com/items?itemName=d-biehl.robotcode
+    Then The Latest Extension Version Should be Correct
+
+
 *** Keywords ***
 User Opens the Chromium Browser
     New Browser    Chromium    headless=${HEADLESS}
@@ -39,3 +49,17 @@ User Navigates to
 Then The Page Title Should be
     [Arguments]    ${title}
     Get Text    title    ==    ${title}
+
+*** Keywords ***
+Get Installed Robotcode Version
+    [Documentation]    This keyword retrieves the version of the installed Robotcode extension.
+    ${result}=    Run And Return Rc And Output    code --list-extensions --show-versions | grep robotcode
+    ${version_string}=    Split String From Right    ${result[1]}    @
+    ${version}=    Get From List    ${version_string}    1
+    [Return]    ${version}
+
+The Latest Extension Version Should be Correct
+    [Documentation]    The Latest Extension Version Should be Correct
+    ${expectedVersion}=    Get Installed Robotcode Version
+    ${actualVersion}=    Get Text    xpath=/html/body/div[4]/div/div/div[2]/div/div/div[2]/div/div/div/div[2]/div[1]/div/table/tbody/tr/td[2]/div[3]/div[5]/div/table/tbody/tr[1]/td[2]
+    Should Be Equal As Strings    ${actualVersion}    ${expectedVersion}
