@@ -13,6 +13,7 @@ Suite Teardown      Teardown Suite
 
 *** Variables ***
 ${HEADLESS}     True
+${is_ci}        ${FALSE}
 
 
 *** Test Cases ***
@@ -53,13 +54,24 @@ Then The Page Title Should be
 *** Keywords ***
 Get Installed Robotcode Version
     [Documentation]    This keyword retrieves the version of the installed Robotcode extension.
-    ${result}=    Run And Return Rc And Output    code --list-extensions --show-versions | grep robotcode
-    ${version_string}=    Split String From Right    ${result[1]}    @
-    ${version}=    Get From List    ${version_string}    1
+    Is Running In CI
+    IF  ${is_ci} != ${TRUE}
+            ${result}=    Run And Return Rc And Output    code --list-extensions --show-versions | grep robotcode
+            ${version_string}=    Split String From Right    ${result[1]}    @
+            ${version}=    Get From List    ${version_string}    1
+        ELSE IF  ${CI} == ${TRUE}
+            ${version}=    Get Text    xpath=/html/body/div[4]/div/div/div[2]/div/div/div[2]/div/div/div/div[2]/div[1]/div/table/tbody/tr/td[2]/div[3]/div[5]/div/table/tbody/tr[1]/td[2]
+    END
+    
     [Return]    ${version}
 
 The Latest Extension Version Should be Correct
-    [Documentation]    The Latest Extension Version Should be Correct
-    ${expectedVersion}=    Get Installed Robotcode Version
-    ${actualVersion}=    Get Text    xpath=/html/body/div[4]/div/div/div[2]/div/div/div[2]/div/div/div/div[2]/div[1]/div/table/tbody/tr/td[2]/div[3]/div[5]/div/table/tbody/tr[1]/td[2]
+    [Documentation]    The Latest Extension Version Should be Correct to installed version
+    ${actualVersion}=    Get Installed Robotcode Version
+    ${expectedVersion}=    Get Text    xpath=/html/body/div[4]/div/div/div[2]/div/div/div[2]/div/div/div/div[2]/div[1]/div/table/tbody/tr/td[2]/div[3]/div[5]/div/table/tbody/tr[1]/td[2]
     Should Be Equal As Strings    ${actualVersion}    ${expectedVersion}
+
+Is Running In CI
+    ${ci}=    Get Environment Variable    CI    ${EMPTY}
+    ${is_ci}=    Convert To Boolean    ${ci}
+    [Return]    ${is_ci}
