@@ -55,6 +55,7 @@ Then The Page Title Should be
 Get Installed Robotcode Version
     [Documentation]    This keyword retrieves the version of the installed Robotcode extension.
     Is Running In CI
+    Log    "is_ci=${is_ci}"
     IF  ${is_ci} != ${TRUE}
             ${result}=    Run And Return Rc And Output    code --list-extensions --show-versions | grep robotcode
             ${version_string}=    Split String From Right    ${result[1]}    @
@@ -73,5 +74,5 @@ The Latest Extension Version Should be Correct
 Is Running In CI
     ${ci}=    Get Environment Variable    CI    ${EMPTY}
     ${is_ci}=    Convert To Boolean    ${ci}
-    Log    ${is_ci}
+    Log    "is_ci=${is_ci}"
     [Return]    ${is_ci}
