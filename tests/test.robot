@@ -51,7 +51,6 @@ Then The Page Title Should be
     [Arguments]    ${title}
     Get Text    title    ==    ${title}
 
-*** Keywords ***
 Get Installed Robotcode Version
     [Documentation]    This keyword retrieves the version of the installed Robotcode extension.
     Is Running In CI
