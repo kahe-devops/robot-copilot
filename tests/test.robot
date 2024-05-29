@@ -59,7 +59,7 @@ Get Installed Robotcode Version
             ${result}=    Run And Return Rc And Output    code --list-extensions --show-versions | grep robotcode
             ${version_string}=    Split String From Right    ${result[1]}    @
             ${version}=    Get From List    ${version_string}    1
-        ELSE IF  ${CI} == ${TRUE}
+        ELSE IF  ${is_ci} == ${TRUE}
             ${version}=    Get Text    xpath=/html/body/div[4]/div/div/div[2]/div/div/div[2]/div/div/div/div[2]/div[1]/div/table/tbody/tr/td[2]/div[3]/div[5]/div/table/tbody/tr[1]/td[2]
     END
     
