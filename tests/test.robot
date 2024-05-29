@@ -74,4 +74,5 @@ Is Running In CI
     ${ci}=    Get Environment Variable    CI    ${EMPTY}
     ${is_ci}=    Convert To Boolean    ${ci}
     Log    "is_ci=${is_ci}"
+    Set Suite Variable    ${is_ci}
     [Return]    ${is_ci}
