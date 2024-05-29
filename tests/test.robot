@@ -62,7 +62,7 @@ Get Installed Robotcode Version
         ELSE IF  ${is_ci} == ${TRUE}
             ${version}=    Get Text    xpath=/html/body/div[4]/div/div/div[2]/div/div/div[2]/div/div/div/div[2]/div[1]/div/table/tbody/tr/td[2]/div[3]/div[5]/div/table/tbody/tr[1]/td[2]
     END
-    [Return]    ${version}
+    [RETURN]    ${version}
 
 The Latest Extension Version Should be Correct
     [Documentation]    The Latest Extension Version Should be Correct to installed version
@@ -75,4 +75,4 @@ Is Running In CI
     ${is_ci}=    Convert To Boolean    ${ci}
     Log    "is_ci=${is_ci}"
     Set Suite Variable    ${is_ci}
-    [Return]    ${is_ci}
+    [RETURN]    ${is_ci}
