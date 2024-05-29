@@ -50,10 +50,11 @@ RUN apt-get update \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # Install Robot Framework and Browser library
+COPY requirements.txt requirements.txt
 RUN pip3 install \
         --upgrade pip \
         --no-cache-dir \
-        -r scripts/requirements.txt
+        -r requirements.txt
 
 # Install Browser library dependencies
 RUN python3 -m Browser.entry init
