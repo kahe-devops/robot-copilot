@@ -2,9 +2,9 @@ version: "3.9"
 
 services:
   robot:
-    # build:
-    #     context: .
-    #     dockerfile: Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: rf-docker
     container_name: rf-docker
     shm_size: "256M"
