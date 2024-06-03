@@ -3,3 +3,4 @@ robotframework-datetime-tz==1.0.6
 robotframework-pabot==2.18.0
 robotframework==7.0
 robotframework-browser==18.5.1
+robotframework-requests==0.9.7
