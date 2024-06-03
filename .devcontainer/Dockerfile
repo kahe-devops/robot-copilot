@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.2
 
 # M$ devcontainer needed for python debugging support
-FROM mcr.microsoft.com/vscode/devcontainers/python:3.9-bullseye
+FROM mcr.microsoft.com/vscode/devcontainers/python:3.11-bullseye
 
 LABEL Robot in Docker
 
