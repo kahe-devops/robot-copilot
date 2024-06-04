@@ -2,46 +2,38 @@
 Documentation       This is a test suite for testing Browser functionality
 ...                 Using https://marketsquare.github.io/robotframework-browser/Browser.html
 
-Library             Browser
-Library             OperatingSystem
-Library             String
-Resource            ../resources/Chromium.resource
+Resource            ../resources/common.resource
 
-Suite Setup         Setup Suite in Chromium    Chromium    ${HEADLESS}
+Suite Setup         Setup Suite in ${BROWSER}    ${BROWSER}    ${HEADLESS}
 Suite Teardown      Teardown Suite
 
 
-*** Variables ***
-${HEADLESS}     True
-${is_ci}        ${FALSE}
-
-
 *** Test Cases ***
-Open Chromium with Browser
-    [Documentation]    Open Chromium with Browser
+Open web browser with Browser library
+    [Documentation]    Open ${BROWSER} with Browser
     [Tags]      set-smoke
     New Page    https://robotframework-browser.org/
     Get Text    title    ==    Browser Library
 
-Gherkin Open Chromium with Browser and navigate to page and check title
-    [Documentation]    Open Chromium with Browser and navigate to page and check title
+Gherkin Open web browser with Browser library and navigate to page and check title
+    [Documentation]    Open ${BROWSER} with Browser and navigate to page and check title
     [Tags]      set-smoke
-    Given User Opens the Chromium Browser
+    Given User Opens the ${BROWSER} Browser
     When User Navigates to    https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html
     Then The Page Title Should be    Robot Framework User Guide
 
 
- Go to Robotcode Extension Page and Read Latest Version
+Go to Robotcode Extension Page and Read Latest Version
     [Documentation]    Go to Robotcode Extension Page and Read Latest Version
     [Tags]    set-smoke
-    Given User Opens the Chromium Browser
+    Given User Opens the ${BROWSER} Browser
     When User Navigates to    https://marketplace.visualstudio.com/items?itemName=d-biehl.robotcode
     Then The Latest Extension Version Should be Correct
 
 
 *** Keywords ***
-User Opens the Chromium Browser
-    New Browser    Chromium    headless=${HEADLESS}
+User Opens the ${BROWSER} Browser
+    New Browser    ${BROWSER}    headless=${HEADLESS}
 
 User Navigates to
     [Arguments]    ${url}
