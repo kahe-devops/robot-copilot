@@ -5,3 +5,6 @@
 *report.html
 playwright-log.txt
 .DS_Store
+.pabotsuitenames
+results/pabot_results/*
+pabot_results/*
