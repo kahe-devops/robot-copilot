@@ -23,7 +23,7 @@ jobs:
 
       - name: Run tests
         run: |
-          robot -i "set-smoke" -e "not-*" --name "Smoke Tests" -L TRACE -d reports/ tests/
+          pabot --argumentfile1 arguments/firefox.args --argumentfile2 arguments/chromium.args --argumentfile3 arguments/safari.args --outputdir results -i "set-smoke" -e "not-*" --name "Smoke Tests" --loglevel TRACE tests/
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
